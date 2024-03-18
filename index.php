@@ -1,4 +1,7 @@
 <?php 
+    $parking = $_GET['parking-flag'];
+    $voteRate = $_GET['vote'];
+    
     $hotels = [
         [
             'name' => 'Hotel Belvedere',
@@ -36,6 +39,12 @@
             'distance_to_center' => 50
         ],
     ];
+
+    if($parking){
+        $hotels = array_filter($hotels, function($hotels){
+            return $hotels['parking'];
+        });
+    }
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +60,16 @@
     <div class="container py-5">
     <h1 class="text-center">Hotel List PHP</h1>
 
-<form>
+<form method="get">
 <div class="form-check">
 
 <div class="mb-3 col-4">
-  <label for="exampleFormControlInput1" class="form-label">Insert vote rate:</label>
-  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Vote value">
+  <label for="parking-flag" class="form-label">Insert vote rate:</label>
+  <input type="number" class="form-control" id="parking-flag" placeholder="Vote value" name="vote">
 </div>
 
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
+  <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" name="parking-flag">
+  <label class="form-check-label" for="flexCheckDefault" value="false">
     Hotels with Parkings
   </label>
 </div>
@@ -79,8 +88,8 @@
   </thead>
   <tbody>
     <?php
-    foreach($hotels as $hotel){
-        echo" 
+        foreach($hotels as $hotel){
+            echo" 
             <tr> ";
             foreach($hotel as $item){
                 echo" <td>
@@ -88,8 +97,8 @@
                 </td>";
             }
             echo" </tr>";      
-    }
-?>
+        }
+    ?>
   </tbody>
 </table>
 
