@@ -1,6 +1,6 @@
 <?php 
-    $parking = $_GET['parking-flag'];
-    $voteRate = $_GET['vote'];
+    $parking = isset($_GET['parking-flag'])? $_GET['parking-flag'] : false;
+    $voteRate = isset($_GET['vote'])? $_GET['vote'] : false;
     
     $hotels = [
         [
@@ -44,7 +44,14 @@
         $hotels = array_filter($hotels, function($hotels){
             return $hotels['parking'];
         });
-    }
+    };
+
+    if($voteRate){
+        $hotels = array_filter($hotels, function($hotels) use($voteRate){
+            return $hotels['vote'] >= $voteRate;
+        });
+    };
+    
 ?>
 
 <!DOCTYPE html>
@@ -64,11 +71,11 @@
 <div class="form-check">
 
 <div class="mb-3 col-4">
-  <label for="parking-flag" class="form-label">Insert vote rate:</label>
-  <input type="number" class="form-control" id="parking-flag" placeholder="Vote value" name="vote">
+  <label for="vote" class="form-label">Insert vote rate:</label>
+  <input type="number" class="form-control" id="vote" placeholder="Vote value" name="vote">
 </div>
 
-  <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" name="parking-flag">
+  <input class="form-check-input" type="checkbox" value="false" id="parking-flag" name="parking-flag">
   <label class="form-check-label" for="flexCheckDefault" value="false">
     Hotels with Parkings
   </label>
