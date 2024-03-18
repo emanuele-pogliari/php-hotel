@@ -43,29 +43,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Hotel PHP</title>
 </head>
 <body>
-    <ul>
-    <?php 
-    foreach($hotels as $hotel) { 
-        echo " 
-        <li>
-            <ul>
-                ";
-                foreach($hotel as $key => $value) {
-                    echo " 
-                    <li>
-                        $key: $value 
-                    </li>";
-                } 
-                echo " 
-            </ul>
-        </li>";
-    }
-    ?>
-    </ul>
     
-  
+    <div class="container py-5">
+    <h1 class="text-center">Hotel List PHP</h1>
+
+<form>
+<div class="form-check">
+
+<div class="mb-3 col-4">
+  <label for="exampleFormControlInput1" class="form-label">Insert vote rate:</label>
+  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Vote value">
+</div>
+
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Hotels with Parkings
+  </label>
+</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Parking</th>
+      <th scope="col">Vote</th>
+      <th scope="col">Distance to the center</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    foreach($hotels as $hotel){
+        echo" 
+            <tr> ";
+            foreach($hotel as $item){
+                echo" <td>
+                $item
+                </td>";
+            }
+            echo" </tr>";      
+    }
+?>
+  </tbody>
+</table>
+
+</div>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
