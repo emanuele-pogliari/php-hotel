@@ -46,6 +46,26 @@
     <title>Hotel PHP</title>
 </head>
 <body>
+    <ul>
+    <?php 
+    foreach($hotels as $hotel) { 
+        echo " 
+        <li>
+            <ul>
+                ";
+                foreach($hotel as $key => $value) {
+                    echo " 
+                    <li>
+                        $key: $value 
+                    </li>";
+                } 
+                echo " 
+            </ul>
+        </li>";
+    }
+    ?>
+    </ul>
     
+  
 </body>
 </html>
