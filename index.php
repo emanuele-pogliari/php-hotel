@@ -1,6 +1,6 @@
 <?php
-$parking = isset($_GET['parking-flag']) ? $_GET['parking-flag'] : false;
-$voteRate = isset($_GET['vote']) ? $_GET['vote'] : false;
+$parking = isset($_GET['parking-flag']);
+$voteRate = isset($_GET['vote']);
 
 $hotels = [
     [
@@ -79,7 +79,7 @@ if ($voteRate) {
                         <div class="input-row d-flex align-items-center gap-3 text-white">
                             <input type="number" class="form-control" id="vote" placeholder="Insert vote value here..." name="vote" min="1" max="5"">
                             <input class=" form-check-input m-0" type="checkbox" value="false" id="parking-flag" name="parking-flag">
-                            <label class="form-check-label" id="checkbox-label" for="checkbox-label">
+                            <label class="form-check-label" id="checkbox-label" for="parking-flag">
                                 Hotels with Parkings
                             </label>
                             <button type="submit" class="btn btn-primary">Filter Hotel</button>

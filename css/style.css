@@ -68,8 +68,9 @@ body {
   padding: 12px;
   border: none;
 }
-.panel .panel-body .table tbody tr td {
-  color: #000;
+.panel tbody tr td {
+  background-color: transparent !important;
+  color: #fff;
   font-size: 15px;
   padding: 10px 12px;
   vertical-align: middle;
@@ -87,4 +88,9 @@ body {
 }
 .panel .panel-footer .col {
   line-height: 35px;
+}
+
+table,
+table td {
+  background-color: transparent;
 }
